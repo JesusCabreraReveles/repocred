@@ -1,0 +1,6 @@
+# Default owners for everything in the repo.
+* @jcr
+
+# Scoring methodology and rubric changes deserve extra scrutiny.
+/SCORING.md @jcr
+/repocred/rubric.py @jcr

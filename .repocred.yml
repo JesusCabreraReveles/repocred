@@ -1,0 +1,15 @@
+# RepoCred configuration — RepoCred audits itself with this file.
+# See SCORING.md for the full meaning of each field.
+
+profile: cli                # this repo ships the `repocred` command
+mode: balanced              # balanced | security | tests | ci
+fail_under: 8.5             # CI gate: below this, the self-score job fails
+
+# weights:                  # optional fine override on top of the mode
+#   security: 20            # (renormalizes the rest back to 100)
+
+# checks:
+#   docker: off             # force an area to N/A
+
+ignore:
+  - "fixtures/**"           # calibration fixtures are sample repos, not our code

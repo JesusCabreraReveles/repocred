@@ -1,0 +1,7 @@
+version = 1
+requires-python = ">=3.9"
+
+[[package]]
+name = "excellent-fixture"
+version = "1.0.0"
+source = { editable = "." }
