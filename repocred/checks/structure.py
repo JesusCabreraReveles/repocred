@@ -23,11 +23,17 @@ def evaluate(ctx: RepoContext) -> list[CheckResult]:
 
     # layout coherent (judgment baseline; the subagent may refine)
     top_dirs = {f.split("/", 1)[0] for f in ctx.files if "/" in f}
-    has_layout = bool(top_dirs & set(_LAYOUT_DIRS))
+    conventional = top_dirs & set(_LAYOUT_DIRS)
+    # A top-level package (flat layout) is just as valid as src/: e.g. mypkg/__init__.py.
+    flat_packages = {f.split("/", 1)[0] for f in ctx.glob("*/__init__.py")}
+    go_dirs = {f.split("/", 1)[0] for f in ctx.glob("*/*.go")}
     small_repo = len(ctx.files) <= 15
-    if has_layout:
-        marker = next(d for d in _LAYOUT_DIRS if d in top_dirs)
-        out.append(result("structure.layout", 3, f"recognized source dir: {marker}/"))
+    if conventional:
+        out.append(result("structure.layout", 3, f"recognized source dir: {sorted(conventional)[0]}/"))
+    elif flat_packages:
+        out.append(result("structure.layout", 3, f"top-level package: {sorted(flat_packages)[0]}/"))
+    elif go_dirs:
+        out.append(result("structure.layout", 3, f"package dir: {sorted(go_dirs)[0]}/"))
     elif small_repo:
         out.append(result("structure.layout", 3, f"small repo ({len(ctx.files)} files), flat layout acceptable"))
     else:

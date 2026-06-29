@@ -43,7 +43,7 @@ def _guard(report: Report) -> None:
     if not report.fully_verified:
         raise BadgeRefused(
             "Refusing to generate a badge from an incompletely-verified run "
-            f"({report.unknown_points} pts unverified). Run with `gh` available so every "
+            f"({report.unknown_points:g} pts unverified). Run with `gh` available so every "
             "remote check resolves, then generate the badge."
         )
 
