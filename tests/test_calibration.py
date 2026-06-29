@@ -56,6 +56,33 @@ def test_docker_na_for_library(tmp_path):
 
 
 @pytest.mark.skipif(not GIT, reason="git not available")
+def test_suggest_apply_creates_files_and_raises_score(tmp_path):
+    from repocred.cli import main
+
+    repo = _materialize(FIXTURES / "empty", tmp_path / "empty")
+    before = float(analyze(repo, "test", local=True).report.score)
+
+    rc = main(["suggest", str(repo), "--local", "--apply"])
+    assert rc == 0
+    assert (repo / "LICENSE").exists()
+    assert (repo / "SECURITY.md").exists()
+    assert (repo / ".github" / "dependabot.yml").exists()
+
+    after = float(analyze(repo, "test", local=True).report.score)
+    assert after > before
+
+
+@pytest.mark.skipif(not GIT, reason="git not available")
+def test_suggest_apply_never_overwrites(tmp_path):
+    from repocred.cli import main
+
+    repo = _materialize(FIXTURES / "empty", tmp_path / "empty")
+    (repo / "LICENSE").write_text("ORIGINAL", encoding="utf-8")
+    main(["suggest", str(repo), "--local", "--apply"])
+    assert (repo / "LICENSE").read_text(encoding="utf-8") == "ORIGINAL"
+
+
+@pytest.mark.skipif(not GIT, reason="git not available")
 def test_excellent_full_marks_components(tmp_path):
     repo = _materialize(FIXTURES / "excellent", tmp_path / "excellent", tag="v1.0.0")
     report = analyze(repo, "test", local=True).report

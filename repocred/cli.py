@@ -15,7 +15,9 @@ from pathlib import Path
 from . import __version__, badge, jsonout, render
 from .analyze import analyze
 from .config import ConfigError
+from .model import State
 from .rubric import MODES, PROFILES
+from .templates import ARTIFACTS
 
 EXIT_OK = 0
 EXIT_GATE = 1
@@ -44,6 +46,11 @@ def build_parser() -> argparse.ArgumentParser:
     score.add_argument("--evidence", action="store_true", help="include per-check evidence (implies --audit)")
     score.add_argument("--fail-under", type=float, metavar="N",
                        help="exit 1 if score < N (CI gate; overrides config)")
+
+    sug = sub.add_parser("suggest", help="show ready-to-paste files for the repo's gaps")
+    _add_common(sug)
+    sug.add_argument("--apply", action="store_true",
+                     help="write the suggested files to the repo (never overwrites existing files)")
 
     bdg = sub.add_parser("badge", help="generate a badge (refuses on incomplete verification)")
     _add_common(bdg)
@@ -81,6 +88,58 @@ def _run_score(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def _is_gap(check_score) -> bool:
+    if check_score is None:
+        return False
+    return check_score.result.state in (State.ZERO, State.PARTIAL)
+
+
+def _run_suggest(args: argparse.Namespace) -> int:
+    analysis = analyze(
+        Path(args.path), __version__,
+        mode_override=args.mode, profile_override=args.profile, local=args.local,
+    )
+    report = analysis.report
+    ctx = analysis.context
+    states = {c.result.spec.key: c for area in report.areas for c in area.checks}
+    gaps = [art for art in ARTIFACTS if _is_gap(states.get(art.key))]
+
+    if not gaps:
+        print("✓ No suggestible gaps found — the auditable artifacts are all in place.")
+        return EXIT_OK
+
+    written: list[str] = []
+    skipped: list[str] = []
+    for art in gaps:
+        content = art.render(ctx)
+        if art.path is None:
+            print(f"\n# ── {art.title} (paste into your README) ──\n")
+            print(content)
+            continue
+        if args.apply:
+            target = Path(args.path) / art.path
+            if target.exists():
+                skipped.append(art.path)
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content, encoding="utf-8")
+            written.append(art.path)
+        else:
+            print(f"\n# ── {art.path} ({art.title}) ──\n")
+            print(content)
+
+    if args.apply:
+        for p in written:
+            print(f"✓ wrote {p}")
+        for p in skipped:
+            print(f"• skipped {p} (already exists; not overwritten)")
+        if written:
+            print("\nRe-run `repocred score .` to see the improved score.")
+    else:
+        print("# Apply these with: repocred suggest . --apply  (existing files are never overwritten)")
+    return EXIT_OK
+
+
 def _run_badge(args: argparse.Namespace) -> int:
     analysis = analyze(
         Path(args.path), __version__,
@@ -115,7 +174,7 @@ def _run_badge(args: argparse.Namespace) -> int:
 def main(argv: list[str] | None = None) -> int:
     raw = list(sys.argv[1:] if argv is None else argv)
     # Default to the `score` subcommand when none is given.
-    passthrough = {"score", "badge", "-h", "--help", "--version"}
+    passthrough = {"score", "badge", "suggest", "-h", "--help", "--version"}
     if not raw:
         raw = ["score"]
     elif raw[0] not in passthrough:
@@ -127,6 +186,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "badge":
             return _run_badge(args)
+        if args.command == "suggest":
+            return _run_suggest(args)
         return _run_score(args)
     except ConfigError as exc:
         print(f"✗ config error: {exc}", file=sys.stderr)

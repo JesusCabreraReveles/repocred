@@ -180,16 +180,24 @@ class RepoContext:
         return False
 
     def _list_files(self) -> list[str]:
-        out = _run(["git", "ls-files"], self.root) if self.git else None
-        if out is not None:
-            rels = [line for line in out.splitlines() if line]
-        else:
+        rels: list[str] | None = None
+        if self.git:
+            # Evaluate the working tree as it would be committed: tracked files plus
+            # untracked-but-not-ignored files (so freshly added files are seen, while
+            # .gitignored cruft is excluded).
+            tracked = _run(["git", "ls-files"], self.root)
+            untracked = _run(["git", "ls-files", "--others", "--exclude-standard"], self.root)
+            if tracked is not None:
+                rels = [line for line in tracked.splitlines() if line]
+                if untracked:
+                    rels += [line for line in untracked.splitlines() if line]
+        if rels is None:
             rels = [
                 p.relative_to(self.root).as_posix()
                 for p in self.root.rglob("*")
                 if p.is_file()
             ]
-        return sorted(r for r in rels if not self._ignored(r))
+        return sorted(set(r for r in rels if not self._ignored(r)))
 
     # --- queries used by checks ---------------------------------------------
     def exists(self, rel: str) -> bool:

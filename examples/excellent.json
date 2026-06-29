@@ -1,0 +1,566 @@
+{
+  "tool": "repocred",
+  "tool_version": "0.1.0",
+  "rubric_version": "v1",
+  "schema": 1,
+  "mode": "balanced",
+  "profile": "library",
+  "score": 10.0,
+  "earned": 89.0,
+  "applicable": 89.0,
+  "verification": {
+    "local_only": true,
+    "fully_verified": false,
+    "coverage": 0.9175257731958762,
+    "unknown_points": 8.0
+  },
+  "effective_weights": {
+    "readme": 18,
+    "security": 15,
+    "tests": 13,
+    "ci": 12,
+    "license": 8,
+    "releases": 8,
+    "structure": 8,
+    "governance": 8,
+    "metadata": 4,
+    "badges": 3,
+    "docker": 3
+  },
+  "areas": [
+    {
+      "key": "readme",
+      "title": "README",
+      "standard": "GitHub Community Standards",
+      "effective_weight": 18,
+      "earned": 18.0,
+      "applicable": 18.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "readme.exists",
+          "title": "Exists and non-trivial (>10 lines)",
+          "tag": "local",
+          "state": "full",
+          "points": 4.0,
+          "max": 4.0,
+          "evidence": [
+            "README.md (18 non-blank lines)"
+          ]
+        },
+        {
+          "key": "readme.tagline",
+          "title": "Clear tagline (what for)",
+          "tag": "local",
+          "state": "full",
+          "points": 4.0,
+          "max": 4.0,
+          "evidence": [
+            "README.md:3"
+          ]
+        },
+        {
+          "key": "readme.install",
+          "title": "Install section with executable block",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "README.md:9"
+          ]
+        },
+        {
+          "key": "readme.usage",
+          "title": "Usage + runnable examples",
+          "tag": "local",
+          "state": "full",
+          "points": 4.0,
+          "max": 4.0,
+          "evidence": [
+            "README.md:15 (+ code example)"
+          ]
+        },
+        {
+          "key": "readme.sections",
+          "title": "Structured sections (>=3 headings)",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "README.md: 4 section headings"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "security",
+      "title": "Security / supply-chain",
+      "standard": "OpenSSF Scorecard",
+      "effective_weight": 15,
+      "earned": 13.0,
+      "applicable": 13.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "security.policy",
+          "title": "SECURITY.md (disclosure policy)",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "SECURITY.md"
+          ]
+        },
+        {
+          "key": "security.deps_mgmt",
+          "title": "Dependency management config",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            ".github/dependabot.yml"
+          ]
+        },
+        {
+          "key": "security.no_secrets",
+          "title": "No secrets committed",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "no secrets detected (13 files scanned)"
+          ]
+        },
+        {
+          "key": "security.branch_protection",
+          "title": "Branch protection on default branch",
+          "tag": "remote",
+          "state": "unknown",
+          "points": 0.0,
+          "max": 2.0,
+          "evidence": [
+            "requires gh (remote check)"
+          ]
+        },
+        {
+          "key": "security.token_perms",
+          "title": "Minimal token permissions in CI",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            "scoped permissions in .github/workflows/ci.yml"
+          ]
+        },
+        {
+          "key": "security.pinned_deps",
+          "title": "Pinned deps / lockfile present",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            "uv.lock"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tests",
+      "title": "Tests",
+      "standard": "—",
+      "effective_weight": 13,
+      "earned": 13.0,
+      "applicable": 13.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "tests.exist",
+          "title": "Tests exist",
+          "tag": "local",
+          "state": "full",
+          "points": 5.0,
+          "max": 5.0,
+          "evidence": [
+            "tests/test_greet.py"
+          ]
+        },
+        {
+          "key": "tests.documented",
+          "title": "Test command documented",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "pyproject.toml (test config)"
+          ]
+        },
+        {
+          "key": "tests.in_ci",
+          "title": "Tests run in CI",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            ".github/workflows/ci.yml"
+          ]
+        },
+        {
+          "key": "tests.coverage",
+          "title": "Coverage signal present",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            "pyproject.toml (coverage config)"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ci",
+      "title": "CI",
+      "standard": "OpenSSF (CI-Tests)",
+      "effective_weight": 12,
+      "earned": 10.0,
+      "applicable": 10.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "ci.workflows",
+          "title": "Workflows present",
+          "tag": "local",
+          "state": "full",
+          "points": 4.0,
+          "max": 4.0,
+          "evidence": [
+            ".github/workflows/ci.yml (1 workflow(s))"
+          ]
+        },
+        {
+          "key": "ci.lint",
+          "title": "Lint configured",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "ruff.toml"
+          ]
+        },
+        {
+          "key": "ci.build_test",
+          "title": "Build/test automated",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            ".github/workflows/ci.yml (build/test step)"
+          ]
+        },
+        {
+          "key": "ci.green",
+          "title": "CI green on last commit",
+          "tag": "remote",
+          "state": "unknown",
+          "points": 0.0,
+          "max": 2.0,
+          "evidence": [
+            "requires gh (remote check)"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "license",
+      "title": "License",
+      "standard": "GitHub / SPDX",
+      "effective_weight": 8,
+      "earned": 8.0,
+      "applicable": 8.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "license.present",
+          "title": "LICENSE file present",
+          "tag": "local",
+          "state": "full",
+          "points": 6.0,
+          "max": 6.0,
+          "evidence": [
+            "LICENSE"
+          ]
+        },
+        {
+          "key": "license.spdx",
+          "title": "Recognized SPDX license, declared",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            "LICENSE: MIT"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "releases",
+      "title": "Releases / versioning",
+      "standard": "SemVer + Keep a Changelog",
+      "effective_weight": 8,
+      "earned": 8.0,
+      "applicable": 8.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "releases.tags",
+          "title": "Tags / releases exist",
+          "tag": "hybrid",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "1 git tag(s), e.g. v1.0.0"
+          ]
+        },
+        {
+          "key": "releases.changelog",
+          "title": "CHANGELOG (Keep a Changelog)",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "CHANGELOG.md (Keep a Changelog shape)"
+          ]
+        },
+        {
+          "key": "releases.semver",
+          "title": "Consistent versioning (SemVer)",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            "1/1 tags follow SemVer"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "structure",
+      "title": "Structure / hygiene",
+      "standard": "Stack conventions",
+      "effective_weight": 8,
+      "earned": 8.0,
+      "applicable": 8.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "structure.layout",
+          "title": "Layout coherent with the stack",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "recognized source dir: src/"
+          ]
+        },
+        {
+          "key": "structure.no_cruft",
+          "title": "No cruft (artifacts, temp, .DS_Store)",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            "no committed cruft detected"
+          ]
+        },
+        {
+          "key": "structure.gitignore",
+          "title": "Adequate .gitignore",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            ".gitignore (6 patterns)"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "governance",
+      "title": "Governance / community",
+      "standard": "GitHub Community Standards",
+      "effective_weight": 8,
+      "earned": 8.0,
+      "applicable": 8.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "governance.contributing",
+          "title": "CONTRIBUTING.md",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "CONTRIBUTING.md"
+          ]
+        },
+        {
+          "key": "governance.coc",
+          "title": "CODE_OF_CONDUCT.md",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            "CODE_OF_CONDUCT.md"
+          ]
+        },
+        {
+          "key": "governance.templates",
+          "title": "Issue/PR templates",
+          "tag": "local",
+          "state": "full",
+          "points": 2.0,
+          "max": 2.0,
+          "evidence": [
+            ".github/ISSUE_TEMPLATE/bug_report.md"
+          ]
+        },
+        {
+          "key": "governance.codeowners",
+          "title": "CODEOWNERS",
+          "tag": "local",
+          "state": "full",
+          "points": 1.0,
+          "max": 1.0,
+          "evidence": [
+            ".github/CODEOWNERS"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "metadata",
+      "title": "Metadata",
+      "standard": "GitHub discoverability",
+      "effective_weight": 4,
+      "earned": 0.0,
+      "applicable": 0.0,
+      "state": "unknown",
+      "checks": [
+        {
+          "key": "metadata.description",
+          "title": "Repo description",
+          "tag": "remote",
+          "state": "unknown",
+          "points": 0.0,
+          "max": 2.0,
+          "evidence": [
+            "requires gh (remote check)"
+          ]
+        },
+        {
+          "key": "metadata.topics",
+          "title": "Topics",
+          "tag": "remote",
+          "state": "unknown",
+          "points": 0.0,
+          "max": 1.0,
+          "evidence": [
+            "requires gh (remote check)"
+          ]
+        },
+        {
+          "key": "metadata.homepage",
+          "title": "Homepage",
+          "tag": "remote",
+          "state": "unknown",
+          "points": 0.0,
+          "max": 1.0,
+          "evidence": [
+            "requires gh (remote check)"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "badges",
+      "title": "Badges",
+      "standard": "—",
+      "effective_weight": 3,
+      "earned": 3.0,
+      "applicable": 3.0,
+      "state": "full",
+      "checks": [
+        {
+          "key": "badges.present",
+          "title": "build / coverage / version / license badges",
+          "tag": "local",
+          "state": "full",
+          "points": 3.0,
+          "max": 3.0,
+          "evidence": [
+            "README.md: badges for build, coverage, license"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "docker",
+      "title": "Docker",
+      "standard": "Container best practices",
+      "effective_weight": 3,
+      "earned": 0.0,
+      "applicable": 0.0,
+      "state": "N/A",
+      "checks": [
+        {
+          "key": "docker.present",
+          "title": "Dockerfile/compose + basic good practices",
+          "tag": "local",
+          "state": "N/A",
+          "points": 0.0,
+          "max": 3.0,
+          "evidence": [
+            "N/A for library profile"
+          ]
+        }
+      ]
+    }
+  ],
+  "files_read": [
+    "pyproject.toml",
+    "README.md",
+    ".github/ISSUE_TEMPLATE/bug_report.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/dependabot.yml",
+    ".github/workflows/ci.yml",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "ruff.toml",
+    "src/excellent/__init__.py",
+    "tests/test_greet.py",
+    "LICENSE",
+    ".gitignore"
+  ]
+}

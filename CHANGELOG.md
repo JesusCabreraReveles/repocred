@@ -6,6 +6,17 @@ All notable changes to RepoCred are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+- `suggest` command: prints ready-to-paste files for a repo's gaps; `--apply` writes them
+  (never overwriting existing files).
+- `examples/` with real, regenerable CLI output and a `vhs` demo script.
+
+### Changed
+- Analysis now evaluates the working tree (tracked + untracked-not-ignored files), so freshly
+  added files are scored immediately.
+- `structure.layout` credits flat-layout top-level packages and Go package dirs, not only `src/`.
+- `security.pinned_deps` accepts a pinned `requirements*.txt`, not only lockfiles.
+
 ## [0.1.0] - 2026-06-28
 
 ### Added

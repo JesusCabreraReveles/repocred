@@ -1,0 +1,70 @@
+📊 RepoCred: 10.0 / 10  █████████████     (rubric v1 · profile: library · mode: balanced)
+
+ℹ️  verification: local — 89/97 pts verified
+   not verified (8 pts): Branch protection on default branch, CI green on last commit, Homepage, Repo description, Topics
+   run with `gh` available for full coverage.
+
+✅ README (18/18)
+✅ Security / supply-chain (13/13)
+✅ Tests (13/13)
+✅ CI (10/10)
+✅ License (8/8)
+✅ Releases / versioning (8/8)
+✅ Structure / hygiene (8/8)
+✅ Governance / community (8/8)
+❓ Metadata (not verified)
+✅ Badges (3/3)
+
+RepoCred audit — rubric v1 · library · balanced · local — 89/97 pts verified
+
+  README                   18/18
+  Security / supply-chain  13/13
+  Tests                    13/13
+  CI                       10/10
+  License                  8/8
+  Releases / versioning    8/8
+  Structure / hygiene      8/8
+  Governance / community   8/8
+  Metadata                 unknown
+  Badges                   3/3
+  Docker                   N/A
+
+  Applicable: 89   Earned: 89   Score: 89 / 89 × 10 = 10.0
+
+Evidence:
+  [   full] readme.exists: README.md (18 non-blank lines)
+  [   full] readme.tagline: README.md:3
+  [   full] readme.install: README.md:9
+  [   full] readme.usage: README.md:15 (+ code example)
+  [   full] readme.sections: README.md: 4 section headings
+  [   full] security.policy: SECURITY.md
+  [   full] security.deps_mgmt: .github/dependabot.yml
+  [   full] security.no_secrets: no secrets detected (13 files scanned)
+  [unknown] security.branch_protection: requires gh (remote check)
+  [   full] security.token_perms: scoped permissions in .github/workflows/ci.yml
+  [   full] security.pinned_deps: uv.lock
+  [   full] tests.exist: tests/test_greet.py
+  [   full] tests.documented: pyproject.toml (test config)
+  [   full] tests.in_ci: .github/workflows/ci.yml
+  [   full] tests.coverage: pyproject.toml (coverage config)
+  [   full] ci.workflows: .github/workflows/ci.yml (1 workflow(s))
+  [   full] ci.lint: ruff.toml
+  [   full] ci.build_test: .github/workflows/ci.yml (build/test step)
+  [unknown] ci.green: requires gh (remote check)
+  [   full] license.present: LICENSE
+  [   full] license.spdx: LICENSE: MIT
+  [   full] releases.tags: 1 git tag(s), e.g. v1.0.0
+  [   full] releases.changelog: CHANGELOG.md (Keep a Changelog shape)
+  [   full] releases.semver: 1/1 tags follow SemVer
+  [   full] structure.layout: recognized source dir: src/
+  [   full] structure.no_cruft: no committed cruft detected
+  [   full] structure.gitignore: .gitignore (6 patterns)
+  [   full] governance.contributing: CONTRIBUTING.md
+  [   full] governance.coc: CODE_OF_CONDUCT.md
+  [   full] governance.templates: .github/ISSUE_TEMPLATE/bug_report.md
+  [   full] governance.codeowners: .github/CODEOWNERS
+  [unknown] metadata.description: requires gh (remote check)
+  [unknown] metadata.topics: requires gh (remote check)
+  [unknown] metadata.homepage: requires gh (remote check)
+  [   full] badges.present: README.md: badges for build, coverage, license
+  [    N/A] docker.present: N/A for library profile

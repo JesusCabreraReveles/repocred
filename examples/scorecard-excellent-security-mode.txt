@@ -1,0 +1,16 @@
+📊 RepoCred: 10.0 / 10  █████████████     (rubric v1 · profile: library · mode: security)
+
+ℹ️  verification: local — 87.3/97 pts verified
+   not verified (9.7 pts): Branch protection on default branch, CI green on last commit, Homepage, Repo description, Topics
+   run with `gh` available for full coverage.
+
+✅ README (14/14)
+✅ Security / supply-chain (26/26)
+✅ Tests (10/10)
+✅ CI (8.3/8.3)
+✅ License (6/6)
+✅ Releases / versioning (6/6)
+✅ Structure / hygiene (7/7)
+✅ Governance / community (7/7)
+❓ Metadata (not verified)
+✅ Badges (3/3)

@@ -1,0 +1,21 @@
+📊 RepoCred: 0.9 / 10  █░░░░░░░░░░░░     (rubric v1 · profile: library · mode: balanced)
+
+ℹ️  verification: local — 87/95 pts verified
+   not verified (8 pts): Branch protection on default branch, CI green on last commit, Homepage, Repo description, Topics
+   run with `gh` available for full coverage.
+
+❌ README (0/18)
+❌ Security / supply-chain (3/11)
+❌ Tests (0/13)
+❌ CI (0/10)
+❌ License (0/8)
+❌ Releases / versioning (0/8)
+⚠️  Structure / hygiene (5/8)
+❌ Governance / community (0/8)
+❓ Metadata (not verified)
+❌ Badges (0/3)
+
+💡 Top improvements (by impact):
+   1. Add a LICENSE file (MIT is the common default).  [+6 pts]
+   2. Add an automated test suite.  [+5 pts]
+   3. Add a Usage section with a runnable example in a code block.  [+4 pts]

@@ -1,0 +1,32 @@
+📊 RepoCred: 10.0 / 10  █████████████     (rubric v1 · profile: library · mode: balanced)
+
+ℹ️  verification: local — 89/97 pts verified
+   not verified (8 pts): Branch protection on default branch, CI green on last commit, Homepage, Repo description, Topics
+   run with `gh` available for full coverage.
+
+✅ README (18/18)
+✅ Security / supply-chain (13/13)
+✅ Tests (13/13)
+✅ CI (10/10)
+✅ License (8/8)
+✅ Releases / versioning (8/8)
+✅ Structure / hygiene (8/8)
+✅ Governance / community (8/8)
+❓ Metadata (not verified)
+✅ Badges (3/3)
+
+RepoCred audit — rubric v1 · library · balanced · local — 89/97 pts verified
+
+  README                   18/18
+  Security / supply-chain  13/13
+  Tests                    13/13
+  CI                       10/10
+  License                  8/8
+  Releases / versioning    8/8
+  Structure / hygiene      8/8
+  Governance / community   8/8
+  Metadata                 unknown
+  Badges                   3/3
+  Docker                   N/A
+
+  Applicable: 89   Earned: 89   Score: 89 / 89 × 10 = 10.0

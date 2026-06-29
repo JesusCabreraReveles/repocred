@@ -54,7 +54,12 @@ repocred score . --audit         # also print the auditable table
 repocred score . --json          # machine-readable output
 repocred score . --mode security # re-weight for a security audit
 repocred score . --local         # filesystem only, skip remote (gh) checks
+
+repocred suggest .               # print ready-to-paste files for the repo's gaps
+repocred suggest . --apply       # write them (never overwrites existing files)
 ```
+
+More real output (deterministic, regenerable) lives in [`examples/`](examples/).
 
 Example scorecard:
 
