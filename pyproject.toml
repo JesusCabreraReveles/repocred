@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "repocred"
-version = "0.1.0"
+version = "0.1.1"
 description = "Auditable repository health scorecard — aligned with OpenSSF Scorecard, GitHub Community Standards and SemVer."
 readme = "README.md"
 requires-python = ">=3.9"

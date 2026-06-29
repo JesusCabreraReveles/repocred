@@ -6,6 +6,13 @@ All notable changes to RepoCred are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-06-29
+
+### Changed
+- Bump PyYAML 6.0.2 → 6.0.3.
+- Bump `actions/checkout` v4 → v7 and `actions/setup-python` v5 → v6 (clears the Node 20
+  deprecation warning in CI).
+
 ## [0.1.0] - 2026-06-28
 
 ### Added
@@ -24,5 +31,6 @@ All notable changes to RepoCred are documented here. The format follows
 - Claude Code subagent definition (`agent/repocred.md`).
 - `examples/` with real, regenerable CLI output and a `vhs` demo script.
 
-[Unreleased]: https://github.com/JesusCabreraReveles/repocred/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/JesusCabreraReveles/repocred/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/JesusCabreraReveles/repocred/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/JesusCabreraReveles/repocred/releases/tag/v0.1.0
