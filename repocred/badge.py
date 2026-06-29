@@ -41,9 +41,11 @@ def _label(report: Report) -> str:
 
 def _guard(report: Report) -> None:
     if not report.fully_verified:
+        pts = report.unknown_points
+        pts_str = str(int(pts)) if pts == pts.to_integral_value() else f"{pts.normalize():f}"
         raise BadgeRefused(
             "Refusing to generate a badge from an incompletely-verified run "
-            f"({report.unknown_points:g} pts unverified). Run with `gh` available so every "
+            f"({pts_str} pts unverified). Run with `gh` available so every "
             "remote check resolves, then generate the badge."
         )
 
