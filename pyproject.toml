@@ -22,8 +22,8 @@ classifiers = [
 dependencies = ["PyYAML>=6.0"]
 
 [project.urls]
-Homepage = "https://github.com/jcr/repocred"
-Repository = "https://github.com/jcr/repocred"
+Homepage = "https://github.com/JesusCabreraReveles/repocred"
+Repository = "https://github.com/JesusCabreraReveles/repocred"
 
 [project.scripts]
 repocred = "repocred.cli:main"

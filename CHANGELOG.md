@@ -31,5 +31,5 @@ All notable changes to RepoCred are documented here. The format follows
 - Calibration fixtures and a scoring regression test suite.
 - Claude Code subagent definition (`agent/repocred.md`).
 
-[Unreleased]: https://github.com/jcr/repocred/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/jcr/repocred/releases/tag/v0.1.0
+[Unreleased]: https://github.com/JesusCabreraReveles/repocred/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/JesusCabreraReveles/repocred/releases/tag/v0.1.0
