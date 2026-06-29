@@ -7,7 +7,7 @@
 ![build](https://img.shields.io/badge/build-passing-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-tracked-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-blue)
-![RepoCred](https://img.shields.io/badge/RepoCred-self--scored-brightgreen)
+![RepoCred](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FJesusCabreraReveles%2Frepocred%2Fmaster%2F.repocred%2Fbadge.json)
 
 RepoCred is **not** a star-chaser. It's a repository-health auditor aligned with
 [OpenSSF Scorecard](https://github.com/ossf/scorecard), [GitHub Community Standards],
